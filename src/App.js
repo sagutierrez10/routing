@@ -1,23 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Switch, Route, Link} from 'react-router-dom'
+import NumPath from './components/NumPath';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <h1>Simple Routing Practice</h1>
+            <Link to="/home">Home</Link>
+          </Route>
+          <Route exact path="/home">
+            <h1>Welcome!</h1> 
+            <Link to="/">Back</Link>
+          </Route>
+          <Route exact path="/:id">
+              <NumPath></NumPath>
+          </Route>
+          <Route exact path="/:id/:fontcolor/:backcolor">
+              <NumPath></NumPath>
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
